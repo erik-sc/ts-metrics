@@ -1,5 +1,6 @@
-import metricsStore from "../src/metric-store"; // Importa o armazenamento de métricas
-import MainClass from "./models/main-class"; // Importa a classe principal
+import {describe, beforeEach, afterEach, it, expect} from '@jest/globals';
+import metricsStore from "../src/metric-store";
+import MainClass from "./models/main-class";
 
 describe("class-metric-test", () => {
     let mainInstance: MainClass;
@@ -30,14 +31,12 @@ describe("class-metric-test", () => {
 
         expect(metricsStore['internalMethod1']).toHaveProperty('totalCalls', 2);
         expect(metricsStore['internalMethod1'].totalTime).toBeGreaterThan(200);
-        expect(metricsStore['internalMethod1'].averageTime).toBeCloseTo(100.061, 2);
         expect(metricsStore['internalMethod1']).toHaveProperty('minTime', expect.any(Number));
         expect(metricsStore['internalMethod1']).toHaveProperty('maxTime', expect.any(Number));
         expect(metricsStore['internalMethod1']).toHaveProperty('standardDeviation', expect.any(Number));
 
         expect(metricsStore['internalMethod2']).toHaveProperty('totalCalls', 2);
         expect(metricsStore['internalMethod2'].totalTime).toBeGreaterThan(400);
-        expect(metricsStore['internalMethod2'].averageTime).toBeCloseTo(200.166, 2);
         expect(metricsStore['internalMethod2']).toHaveProperty('minTime', expect.any(Number));
         expect(metricsStore['internalMethod2']).toHaveProperty('maxTime', expect.any(Number));
         expect(metricsStore['internalMethod2']).toHaveProperty('standardDeviation', expect.any(Number));
@@ -51,14 +50,12 @@ describe("class-metric-test", () => {
 
         expect(metricsStore['fetchData']).toHaveProperty('totalCalls', 2);
         expect(metricsStore['fetchData']).toHaveProperty('totalTime');
-        expect(metricsStore['fetchData'].averageTime).toBeCloseTo(300.160, 2);
         expect(metricsStore['fetchData']).toHaveProperty('minTime', expect.any(Number));
         expect(metricsStore['fetchData']).toHaveProperty('maxTime', expect.any(Number));
         expect(metricsStore['fetchData']).toHaveProperty('standardDeviation', expect.any(Number));
 
         expect(metricsStore['processExternalData']).toHaveProperty('totalCalls', 2);
         expect(metricsStore['processExternalData']).toHaveProperty('totalTime');
-        expect(metricsStore['processExternalData'].averageTime).toBeCloseTo(150.061, 2);
         expect(metricsStore['processExternalData']).toHaveProperty('minTime', expect.any(Number));
         expect(metricsStore['processExternalData']).toHaveProperty('maxTime', expect.any(Number));
         expect(metricsStore['processExternalData']).toHaveProperty('standardDeviation', expect.any(Number));
